@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuario")
-public class Usuarios {
+public class Usuarios implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
@@ -37,4 +42,8 @@ public class Usuarios {
     @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id_usuario")
     ,inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id_role"))
     private List<Roles> roles = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "usuario")
+    @ToString.Exclude
+    private List<Factura> facturas;
 }

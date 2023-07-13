@@ -46,5 +46,15 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Carlos Tontaquimba/.m2/repository/org/hibernate/orm/hibernate-envers/6.1.1.Final/hibernate-envers-6.1.1.Final.jar" sourcepath="C:/Users/Carlos Tontaquimba/.m2/repository/org/hibernate/orm/hibernate-envers/6.1.1.Final/hibernate-envers-6.1.1.Final-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="hibernate-envers-6.1.1.Final.jar"/>
+			<attribute name="maven.groupId" value="org.hibernate.orm"/>
+			<attribute name="maven.artifactId" value="hibernate-envers"/>
+			<attribute name="maven.version" value="6.1.1.Final"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -27,9 +27,17 @@ public class UsuariosService implements UsuariosInterface {
 		return usuariosRepository.existsByUsername(username);
 	}
 	
+	public Optional<Usuarios> getUserById(Long id){
+		return usuariosRepository.findById(id);
+	}
+	
 	public void save(Usuarios usuarios) {
 		// TODO Auto-generated method stub
 		usuariosRepository.save(usuarios);
+	}
+	
+	public Usuarios findByIdUsuario(Long id) {
+		return usuariosRepository.findByIdUsuario(id);
 	}
 
 }
