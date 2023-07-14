@@ -49,7 +49,7 @@ public class HabitacionesController {
         return new ResponseEntity(new ResponseMessageDto("Habitación registrada correctamente", HttpStatus.OK.value()), HttpStatus.OK);
     }
 	
-	@GetMapping("/habitaciones")
+	@GetMapping("todos")
 	@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	public ResponseEntity<List<Habitaciones>> getAllHabitaciones() {
 
@@ -60,8 +60,7 @@ public class HabitacionesController {
 	    return new ResponseEntity<>(habitaciones, HttpStatus.OK);
 	}
 	
-	@GetMapping("/habitaciones/disponibles")
-	@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+	@GetMapping("disponibles")
 	public ResponseEntity<List<Habitaciones>> getByDisponibilidad() {
 
 	    // Get all rooms from the database.
@@ -71,7 +70,7 @@ public class HabitacionesController {
 	    return new ResponseEntity<>(habitaciones, HttpStatus.OK);
 	}
 	
-	@GetMapping("/habitacionById/{id}")
+	@GetMapping("habitacionById/{id}")
 	@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	public ResponseEntity<Habitaciones> findById(@PathVariable(value = "id") Long id) {
 

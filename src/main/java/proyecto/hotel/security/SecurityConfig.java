@@ -65,15 +65,21 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests() //Toda petición http debe ser autorizada
                 .requestMatchers("/api/auth/**").permitAll()
+                
+
+                .requestMatchers("/api/habitaciones/disponibles").permitAll()
                 .requestMatchers("/api/habitaciones/habitacion/{id}").hasAuthority("ADMIN")
                 .requestMatchers("/api/habitaciones/habitacion/delete/{id}").hasAuthority("ADMIN")
                 .requestMatchers("/api/habitaciones/register").hasAuthority("ADMIN")
                 .requestMatchers("/api/habitaciones/**").hasAnyAuthority("ADMIN" , "USER")
+                
                 .requestMatchers("/api/reservas/**").hasAuthority("USER")
                 .requestMatchers("/api/reservas/reservas").hasAnyAuthority("ADMIN" , "USER")
+                
                 .requestMatchers("/api/lista/reservas/**").hasAnyAuthority("ADMIN" , "USER")
                 .requestMatchers("/api/lista/reservas/delete/{id}").hasAuthority("USER")
                 .requestMatchers("/api/lista/reservas/edit/{id}").hasAuthority("USER")
+                
                 .requestMatchers("/api/factura/register").hasAuthority("USER")
                 .anyRequest().authenticated()
                 .and()

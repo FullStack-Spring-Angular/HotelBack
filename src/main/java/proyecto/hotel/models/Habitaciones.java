@@ -2,6 +2,8 @@ package proyecto.hotel.models;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +33,7 @@ public class Habitaciones implements Serializable{
 	private long numCamas;
 	private long numBanios;
 	private long precio;
+	@JsonIgnore
 	private boolean disponibilidad;
 	
 	@ManyToOne

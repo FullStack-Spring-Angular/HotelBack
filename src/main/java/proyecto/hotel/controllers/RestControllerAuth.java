@@ -72,13 +72,13 @@ public class RestControllerAuth {
         
         usuariosService.save(usuarios);
         return new ResponseEntity(new ResponseMessageDto("Usuario registrado correctamente", HttpStatus.OK.value()), HttpStatus.OK);
-    }
+    }	
 
     //Método para poder guardar usuarios de tipo ADMIN
     @PostMapping("register/admin")
     public ResponseEntity<String> registrarAdmin(@RequestBody DtoRegistro dtoRegistro) {
         if (usuariosService.existsByUsername(dtoRegistro.getUsername())) {
-        	return new ResponseEntity(new ResponseMessageDto("Ya existe usuario con ese nombre de usuario", HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
+        	return new ResponseEntity(new ResponseMessageDto("Ya existe administradoe con ese nombre de usuario", HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
         }
         Usuarios usuarios = new Usuarios();
         usuarios.setUsername(dtoRegistro.getUsername());
@@ -115,8 +115,7 @@ public class RestControllerAuth {
         String token = request.getHeader("Authorization");
         // Add the token to the blacklist
         tokenBlacklist.add(token);
-
-        return new ResponseEntity<>(new DtoAuthRespuesta(null,null), HttpStatus.OK);
+        return new ResponseEntity(new ResponseMessageDto("Sesion cerrada",HttpStatus.OK.value()), HttpStatus.OK);
     }
 
     private boolean isTokenBlacklisted(String token) {
